@@ -1,8 +1,24 @@
 const Hospital = require('../models/Hospital');
+const VacCenter = require('../models/VacCenter');
 
 // router.get('/', (req,res) => {
 //     res.status(200).json({success:true, msg:`Show all hospitals`});
 // })
+
+//@desc Get vaccine centers
+//@route GET /api/v1/hospitals/VacCenter
+//@access Public
+exports.getVacCenters =(req,res,next) => {
+    VacCenter.getAll((err,data) => {
+        if(err) {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving Vaccine Centers."
+            });
+        } else {
+            res.send(data);
+        }
+    })
+}
 
 //@description Get all hospitals
 //@route GET /api/v1/hospitals
