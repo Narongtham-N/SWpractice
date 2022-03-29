@@ -9,7 +9,7 @@ exports.protect = async (req,res,next) => {
         token = req.headers.authorization.split(' ')[1];
     };
 
-    if (!token) {
+    if (!token || token === 'null') {
         res.status(401).json({success: false, msg: 'Unauthorized to access this route'});
     };
 
